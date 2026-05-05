@@ -1,6 +1,5 @@
 This repository contains the anonymized research artifacts required to evaluate the contributions of the submitted paper. The artifacts support the construction of code-evolution provenance graphs (CEPGs), training and fine-tuning of a temporal graph neural network (TGAT), and evaluation of a reinforcement-learning–based patch generation pipeline.
 
-
 This artifact uses three datasets. Due to licensing constraints, raw datasets are not redistributed in this repository.
 
 ### Project CodeNet
@@ -58,7 +57,6 @@ The test is successful if it concludes with `ALL SMOKE TESTS PASSED!`.
 
 ---
 
-
 The experimental pipeline consists of the following stages:
 
 1. **CodeNet CEPG Construction**
@@ -96,7 +94,6 @@ src/
 README.md                  Instructions for obtaining external datasets and running the code
 requirements.txt           Python dependencies
 Dockerfile                 Dockerfile for full reproducibility
-
 ```
 
 ## Execution Environment and File Paths
@@ -170,8 +167,6 @@ python src/Train_scripts/CodeT5.py
 ```bash
 python src/Patch_code/train_patch_agent.py
 ```
-
-
 
 ---
 
