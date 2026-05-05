@@ -14,19 +14,23 @@ Dataset page: https://huggingface.co/datasets/LorenzH/juliet_test_suite_c_1_3
 We build ManyBugs CEPGs from the ManyBugs benchmark.
 Official benchmark page: https://repairbenchmarks.cs.umass.edu/
 
+### CVEFixes
+We use the CVEFixes dataset for evaluating the generalizability of the RL patch generation pipeline on real-world vulnerabilities.
+Dataset page: https://github.com/secureIT-project/CVEfixes
+
 
 ## Included Sample for Patch Environment Testing
 
 To enable lightweight testing and validation of the patching pipeline without requiring full dataset downloads, this repository includes a small curated sample of vulnerable code snippets constructed from the Juliet and ManyBugs datasets.
 
-- File: `proper_vulnerable_code.txt` (Patch Code/ proper_vulnerable_code.txt)
+- File: `proper_vulnerable_code.txt`
 - Usage: automatically loaded by the patch environment when running in training mode
 
-This sample allows verification of core functionality—including compilation, action selection, reward computation, and patch application—with minimal setup. It is intended for sanity checking and smoke testing only; full experimental results reported in the paper require the complete datasets.
+This sample allows verification of core functionality including compilation, action selection, reward computation, and patch application with minimal setup. It is intended for sanity checking and smoke testing only; full experimental results reported in the paper require the complete datasets.
 
 ## Reviewer Smoke Test Guide
 
-The `smoke_test.py` script allows you to validate the project setup and environment in under a minute without loading large datasets. It validates core imports, environment initialization, and runs a mini reinforcement learning training trial.
+The `smoke_test.py` script allows you to validate the project setup and environment without loading large datasets. It validates core imports, environment initialization, and runs a mini reinforcement learning training trial.
 
 ### Local Environment Setup
 
@@ -43,7 +47,7 @@ If you prefer to run the code locally rather than via Docker, follow these steps
    ```bash
    pip install -r requirements.txt
    ```
-   *Note: For the smoke test specifically, additional libraries like `torch-geometric` may be required if not in the base requirements.*
+
 
 ### Running the Smoke Test
 
@@ -79,6 +83,9 @@ The experimental pipeline consists of the following stages:
    - Train a PPO-based reinforcement learning agent in a patching environment.
    - Evaluate patch success, exploit blocking, and patch quality.
 
+6. **Comparative Evaluation on CVEFixes**
+   - Evaluate the trained RL agent against modernbaselines (ChatRepair, SAN2PATCH) on real-world CVEs.
+
 ---
 
 ## Repository Structure
@@ -89,7 +96,7 @@ src/
   Train_scripts/           TGAT and CodeT5 training / fine-tuning scripts
   Patch_code/              RL patch environment and PPO agent
   Evaluation_scripts/      Evaluation and metric computation scripts
-  baselines/               Construction of baselines for comparison
+  baselines/               Comparative evaluation against ChatRepair and SAN2PATCH
 
 README.md                  Instructions for obtaining external datasets and running the code
 requirements.txt           Python dependencies
@@ -172,4 +179,4 @@ python src/Patch_code/train_patch_agent.py
 
 ## Notes on Artifact Availability
 
-All artifacts required for evaluation are included or described above. Following conditional paper acceptance, non-anonymized links to the same artifacts will be provided for camera-ready submission, as required by the conference Open Science policy.
+All artifacts required for evaluation are included or described above. Following conditional paper acceptance, non-anonymized links to the same artifacts will be provided for camera-ready submission.
