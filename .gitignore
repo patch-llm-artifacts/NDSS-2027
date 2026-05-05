@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Torch / checkpoints
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+models/
+
+# Logs and outputs
+logs/
+outputs/
+results/
+*.log
+
+# Large datasets (DO NOT UPLOAD)
+data/
+datasets/
+*.jsonl.large
+*.zip
+*.tar.gz
+
+# OS / editor
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+
+# Ignore folders
+datasets/
+checkpoints*/
+tmp/
+__pycache__/
+.anaconda/
+.hf_cache/
+semgrep_cache/
+logs/
+*.log
+
+# Environment and Anonymity
+venv/
+.venv/
+env/
+.env/
+.gemini/
+.idea/
+.vscode/
+node_modules/
+dist/
+build/
+*.bak
+*.tmp
+*.joblib

@@ -1,0 +1,146 @@
+rules:
+
+  # --- Buffer Overflows / Unsafe Functions ---
+  - id: cwe120-gets-buffer-overflow
+    languages: [c]
+    message: "Unsafe use of gets() — CWE-120: Buffer Copy without Checking Size"
+    severity: ERROR
+    pattern: gets($BUF)
+    metadata: { cwe: ["CWE-120"], category: "Buffer Overflow" }
+
+  - id: cwe242-strcpy-unsafe
+    languages: [c]
+    message: "Use of strcpy() without bounds check — CWE-242: Use of Inherently Dangerous Function"
+    severity: WARNING
+    pattern: strcpy($DST, $SRC)
+    metadata: { cwe: ["CWE-242"], category: "Unsafe Function" }
+
+  - id: cwe121-sprintf-overflow
+    languages: [c]
+    message: "Potential buffer overflow in sprintf() — CWE-121: Stack-Based Buffer Overflow"
+    severity: ERROR
+    pattern: sprintf($BUF, $ARG)
+    metadata: { cwe: ["CWE-121"], category: "Buffer Overflow" }
+
+  - id: cwe134-format-string
+    languages: [c]
+    message: "Format string vulnerability (CWE-134)"
+    severity: ERROR
+    pattern: printf($ARG)
+    metadata: { cwe: ["CWE-134"], category: "Format String" }
+
+  - id: cwe190-integer-overflow
+    languages: [c]
+    message: "Possible integer overflow (CWE-190)"
+    severity: WARNING
+    pattern-either:
+      - pattern: "$X + $Y"
+      - pattern: "$X * $Y"
+    metadata: { cwe: ["CWE-190"], category: "Arithmetic" }
+
+  - id: cwe401-memory-leak
+    languages: [c]
+    message: "Memory allocated but not freed — CWE-401: Memory Leak"
+    severity: WARNING
+    pattern: malloc($SIZE)
+    metadata: { cwe: ["CWE-401"], category: "Memory" }
+
+  - id: cwe590-free-stack-memory
+    languages: [c]
+    message: "Freeing stack memory — CWE-590"
+    severity: ERROR
+    pattern: free($VAR)
+    metadata: { cwe: ["CWE-590"], category: "Memory" }
+
+  - id: cwe476-null-pointer
+    languages: [c]
+    message: "Possible null pointer dereference — CWE-476"
+    severity: WARNING
+    pattern-either:
+      - pattern: "*$PTR"
+      - pattern: "$PTR->field"
+    metadata: { cwe: ["CWE-476"], category: "Pointer" }
+
+  - id: cwe404-resource-release
+    languages: [c]
+    message: "Missing fclose() or resource release — CWE-404"
+    severity: WARNING
+    pattern: fopen($FNAME, $MODE)
+    metadata: { cwe: ["CWE-404"], category: "Resource" }
+
+  - id: cwe253-exception-ignored
+    languages: [c]
+    message: "Function return value ignored — CWE-253"
+    severity: WARNING
+    pattern: $FUNC($ARG)
+    metadata: { cwe: ["CWE-253"], category: "Error Handling" }
+
+  # --- Input Validation / Injection ---
+  - id: cwe78-command-injection
+    languages: [c]
+    message: "Potential command injection via system() — CWE-78"
+    severity: ERROR
+    pattern: system($CMD)
+    metadata: { cwe: ["CWE-78"], category: "Injection" }
+
+  - id: cwe89-sql-injection
+    languages: [c]
+    message: "Potential SQL injection — CWE-89"
+    severity: ERROR
+    pattern: strcat($QUERY, $INPUT)
+    metadata: { cwe: ["CWE-89"], category: "Injection" }
+
+  - id: cwe134-uncontrolled-format
+    languages: [c]
+    message: "Uncontrolled format string vulnerability — CWE-134"
+    severity: ERROR
+    pattern: scanf($INPUT)
+    metadata: { cwe: ["CWE-134"], category: "Format String" }
+
+  # --- Cryptography / Randomness ---
+  - id: cwe327-weak-crypto
+    languages: [c]
+    message: "Use of weak cryptographic algorithm — CWE-327"
+    severity: WARNING
+    pattern-either:
+      - pattern: MD5($ARG)
+      - pattern: SHA1($ARG)
+    metadata: { cwe: ["CWE-327"], category: "Crypto" }
+
+  - id: cwe338-weak-random
+    languages: [c]
+    message: "Weak randomness using rand() — CWE-338"
+    severity: WARNING
+    pattern: rand()
+    metadata: { cwe: ["CWE-338"], category: "Crypto" }
+
+  # --- Improper Validation ---
+  - id: cwe20-input-validation
+    languages: [c]
+    message: "Improper input validation — CWE-20"
+    severity: WARNING
+    pattern: gets($VAR)
+    metadata: { cwe: ["CWE-20"], category: "Validation" }
+
+  - id: cwe676-dangerous-call
+    languages: [c]
+    message: "Dangerous system call (CWE-676)"
+    severity: WARNING
+    pattern-either:
+      - pattern: system($CMD)
+      - pattern: exec($CMD)
+    metadata: { cwe: ["CWE-676"], category: "Dangerous Function" }
+
+  - id: cwe252-error-check-missing
+    languages: [c]
+    message: "Function return value not checked — CWE-252"
+    severity: WARNING
+    pattern: $FUNC($ARG)
+    metadata: { cwe: ["CWE-252"], category: "Error Handling" }
+
+  - id: cwe457-uninitialized-variable
+    languages: [c]
+    message: "Use of uninitialized variable — CWE-457"
+    severity: WARNING
+    pattern: int $VAR;
+    metadata: { cwe: ["CWE-457"], category: "Initialization" }

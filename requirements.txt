@@ -1,0 +1,45 @@
+# ----------------------------
+# Core scientific stack
+# ----------------------------
+numpy==1.26.4
+pandas==2.2.2
+scipy==1.13.1
+tqdm==4.66.5
+matplotlib==3.9.1
+pyyaml==6.0.2
+
+# ----------------------------
+# Hugging Face / LLM stack
+# ----------------------------
+transformers==4.44.2
+tokenizers==0.19.1
+datasets==4.1.1
+huggingface_hub==0.24.6
+accelerate==0.33.0
+sentencepiece==0.2.0
+protobuf==5.27.3
+
+# ----------------------------
+# ML / metrics
+# ----------------------------
+scikit-learn==1.5.2
+
+
+gymnasium==0.29.1
+stable-baselines3==2.3.2
+
+# ----------------------------
+# Static analysis
+# ----------------------------
+semgrep==1.86.0
+
+# ----------------------------
+# AST tooling
+# ----------------------------
+tree-sitter==0.20.1
+tree-sitter-languages==1.7.0
+
+# ----------------------------
+# Quality-of-life / debugging
+# ----------------------------
+psutil==6.0.0
