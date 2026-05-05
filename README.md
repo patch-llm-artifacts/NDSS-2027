@@ -1,6 +1,6 @@
 This repository contains the anonymized research artifacts required to evaluate the contributions of the submitted paper. The artifacts support the construction of code-evolution provenance graphs (CEPGs), training and fine-tuning of a temporal graph neural network (TGAT), and evaluation of a reinforcement-learning–based patch generation pipeline.
 
-This artifact uses three datasets. Due to licensing constraints, raw datasets are not redistributed in this repository.
+This artifact uses the follwing datasets. Due to licensing constraints, raw datasets are not redistributed in this repository.
 
 ### Project CodeNet
 We build Code-Evolution Provenance Graphs (CEPGs) from the Project CodeNet distribution using the dataset-provided CSV metadata and source files.
@@ -96,7 +96,7 @@ src/
   Train_scripts/           TGAT and CodeT5 training / fine-tuning scripts
   Patch_code/              RL patch environment and PPO agent
   Evaluation_scripts/      Evaluation and metric computation scripts
-  baselines/               Comparative evaluation against ChatRepair and SAN2PATCH
+  baselines/               Comparative evaluation against baselines
 
 README.md                  Instructions for obtaining external datasets and running the code
 requirements.txt           Python dependencies
