@@ -25,6 +25,39 @@ To enable lightweight testing and validation of the patching pipeline without re
 
 This sample allows verification of core functionality—including compilation, action selection, reward computation, and patch application—with minimal setup. It is intended for sanity checking and smoke testing only; full experimental results reported in the paper require the complete datasets.
 
+## Reviewer Smoke Test Guide
+
+The `smoke_test.py` script allows you to validate the project setup and environment in under a minute without loading large datasets. It validates core imports, environment initialization, and runs a mini reinforcement learning training trial.
+
+### Local Environment Setup
+
+If you prefer to run the code locally rather than via Docker, follow these steps:
+
+1. **Create a virtual environment**:
+   ```bash
+   python -m venv venv
+   ```
+2. **Activate the environment**:
+   - Windows: `.\venv\Scripts\activate`
+   - Linux/macOS: `source venv/bin/activate`
+3. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   *Note: For the smoke test specifically, additional libraries like `torch-geometric` may be required if not in the base requirements.*
+
+### Running the Smoke Test
+
+Execute the script using the Python interpreter in your environment:
+
+```bash
+python smoke_test.py
+```
+
+The test is successful if it concludes with `ALL SMOKE TESTS PASSED!`.
+
+---
+
 
 The experimental pipeline consists of the following stages:
 
